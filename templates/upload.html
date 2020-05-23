@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Trachio</title>
+
+{% endblock head %}
+ 
+{% block body %}
+
+<div class="nav-container">
+    <img src="/static/images/trachio_logo.png" alt="">
+</div>
+
+<div class="file-selector">
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        
+        <label>Upload a spectrogram:</label>
+        <input type="file" name="image">
+    
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,17 @@
+body {
+    font-family: "Chelsea Market";
+    margin:0
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    color: white;
+
+    margin: auto
+}
+
+.file-selector {
+    
+}
