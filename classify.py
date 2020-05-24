@@ -33,7 +33,6 @@ def classify(img_filename):
     data[0] = normalized_image_array
 
     prediction = model.predict(data)
-    print("prediction:%f" %prediction[0][0])
     return labels[np.argmax(prediction)]
 
 

@@ -8,7 +8,7 @@
  
 {% block body %}
 
-<div class="nav-container">
+<div id="trachio-logo" class="nav-container">
     <img src="/static/images/trachio_logo.png" alt="">
 </div>
 
@@ -20,15 +20,18 @@
     
         <button type="submit">Submit</button>
     </form>
-    Diagnosis: {{ diagnosis }}
 </div>
 
-<img src="uploads/Asthma-1.png" alt="">
 
-{% if img_filename %}
 
-<img src={{img_filename}} alt="">
+<div class="uploaded-image-wrapper">
+    {% if img_filename %}
+    <img src={{img_filename}} style="height:250px;" alt="">
+    {% endif %}
+</div>
 
-{% endif %}
+Diagnosis: {{ diagnosis}}
+
+
 
 {% endblock body %}

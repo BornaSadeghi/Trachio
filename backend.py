@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from werkzeug.utils import secure_filename
 import os
 import classify
@@ -24,13 +24,14 @@ def upload():
     if request.method == "POST":
         if request.files:
             image = request.files["image"]
-            filename = "uploads/{}".format(secure_filename(image.filename))
+            filename = "static/uploads/{}".format(secure_filename(image.filename))
 
             image.save(filename)
 
             diagnosis = classify.classify(filename)
-
+            
             return render_template("upload.html", diagnosis=diagnosis, img_filename=filename)
+            # return jsonify(diagnosis_dict)
             # image = request.files["image"]
             # print(image, type(image))
             # image.save(os.path.join(app.config["IMAGE_UPLOADS"]), image.filename)
