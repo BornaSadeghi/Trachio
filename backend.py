@@ -21,8 +21,6 @@ app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["JPG", "PNG", "JPEG", "GIF"]
 @app.route('/upload', methods=["GET", "POST"])
 def upload():
 
-    diagnosis = None
-
     if request.method == "POST":
         if request.files:
             image = request.files["image"]
@@ -32,11 +30,12 @@ def upload():
 
             diagnosis = classify.classify(filename)
 
+            return render_template("upload.html", diagnosis=diagnosis, img_filename=filename)
             # image = request.files["image"]
             # print(image, type(image))
             # image.save(os.path.join(app.config["IMAGE_UPLOADS"]), image.filename)
 
-    return render_template("upload.html", diagnosis=diagnosis)
+    return render_template("upload.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

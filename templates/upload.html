@@ -23,4 +23,12 @@
     Diagnosis: {{ diagnosis }}
 </div>
 
+<img src="uploads/Asthma-1.png" alt="">
+
+{% if img_filename %}
+
+<img src={{img_filename}} alt="">
+
+{% endif %}
+
 {% endblock body %}
