@@ -1,17 +1,19 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from werkzeug.utils import secure_filename
 import os
-import classify
+import classify_local
 
 app = Flask(__name__)
 
 '''
 TODO
--Create option to contact local health department for potential of COVID-19
-
+-Improve ML component by doing it for reals (AutoML Vision for spectrograms)
+    -To do so I must first be able to convert from audio to spectrogram
+    -THEN I can flex the accuracy
 
 -Upload the images to a MongoDB database?
--Rename to Trackea
+-Redo logo
+-Rename to Trackea or Tracheo
 '''
 
 app.config["IMAGE_UPLOADS"] = "uploads"
@@ -28,7 +30,7 @@ def upload():
 
             image.save(filename)
 
-            diagnosis = classify.classify(filename)
+            diagnosis = classify_local.classify(filename)
             
             return render_template("upload.html", diagnosis=diagnosis, img_filename=filename)
             # return jsonify(diagnosis_dict)

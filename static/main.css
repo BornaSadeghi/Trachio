@@ -1,18 +1,39 @@
 body {
     font-family: "Chelsea Market";
-    margin: 0px;
+    font-size: x-large;
+    margin: 10px;
     text-align: center;
 }
 
 #trachio-logo {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
 }
 
 .nav-container {
     display: inline-block;
     margin: auto;
     
+    vertical-align: middle;
+
     width: 250px;
     height: 250px;
+
+    padding: 20px;
 }
+
+.uploaded-image-wrapper {
+    padding: 20px;
+}
+
+#file-selector {
+    background-color: #aaaaaa;
+    padding: 10px;
+}
+
+#upload-section {
+    background-color: #dddddd;
+    width: fit-content;
+    margin: auto;
+}
+

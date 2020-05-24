@@ -5,33 +5,39 @@
 <title>Trachio</title>
 
 {% endblock head %}
- 
+
 {% block body %}
 
-<div id="trachio-logo" class="nav-container">
-    <img src="/static/images/trachio_logo.png" alt="">
+<div class="nav-container">
+    <img id="trachio-logo" src="/static/images/trachio_logo.png" alt="">
 </div>
 
-<div class="file-selector">
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        
-        <label>Upload a spectrogram:</label>
-        <input type="file" name="image">
-    
-        <button type="submit">Submit</button>
-    </form>
-</div>
+<div id="upload-section">
+    <div id="file-selector">
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            
+            <label>Upload a spectrogram:</label>
+            <input type="file" name="image">
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 
-
-
-<div class="uploaded-image-wrapper">
     {% if img_filename %}
-    <img src={{img_filename}} style="height:250px;" alt="">
+    <div class="uploaded-image-wrapper">
+        <img src={{img_filename}} style="height:250px;" alt="">
+    </div>
+    Diagnosis: {{ diagnosis }}
+    
+    {% if diagnosis != "healthy" %}
+    <form action="mailto:rjohnson@alpinecountyca.gov?subject=Potential%20COVID-19%20Case&body=Hello,%20I%20am%20emailing%20to%20report%20that%20my%20patient%20____%20is%20displaying%20symptoms%20of%20COVID-19." method="POST" enctype="multipart/form-data">
+        <input type="submit" value="Report to local health department">
+    </form>
     {% endif %}
+    {% endif %}
+    
 </div>
-
-Diagnosis: {{ diagnosis}}
-
+</div>
 
 
 {% endblock body %}
